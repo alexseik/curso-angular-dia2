@@ -1,4 +1,4 @@
-# Angular101Day1
+# Angular101Day2 Init repo
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
 
