@@ -1,0 +1,9 @@
+<div [ngClass]="cssClasses" [style.color]="colorStyle">
+  <h2>{{ name }}</h2>
+  <h3>{{ surname }}</h3>
+  <p><strong>Age:</strong>{{ candidate.age }}</p>
+  <p><strong>Position:</strong>{{ candidate.position }}</p>
+  <p><strong>Experience:</strong>{{ candidate.experience }}</p>
+  <p><strong>Skills:</strong>{{ candidate.skills.join(", ") }}</p>
+  <p><button data-testid="candidate-edit" (click)="doEdit()">Edit</button></p>
+</div>
