@@ -17,17 +17,15 @@
   </div>
   <app-candidate-list #list>
     <h2 title>Lista de candidatos</h2>
-    <app-candidate
-      [candidate]="candidates[0]"
-      (select)="selectCandidate($event)"
-    ></app-candidate>
-    <app-candidate
-      [candidate]="candidates[1]"
-      (select)="selectCandidate($event)"
-    ></app-candidate>
-    <app-candidate
-      [candidate]="candidates[2]"
-      (select)="selectCandidate($event)"
-    ></app-candidate
-  ></app-candidate-list>
+    <div
+      class="candidate-box"
+      *ngFor="let candidate of candidates; let i = index; trackBy: trackById"
+    >
+      <span>{{ i }}</span>
+      <app-candidate
+        [candidate]="candidate"
+        (select)="selectCandidate($event)"
+      ></app-candidate>
+    </div>
+  </app-candidate-list>
 </div>

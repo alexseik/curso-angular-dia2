@@ -4,6 +4,46 @@
   <p><strong>Age:</strong>{{ candidate.age }}</p>
   <p><strong>Position:</strong>{{ candidate.position }}</p>
   <p><strong>Experience:</strong>{{ candidate.experience }}</p>
-  <p><strong>Skills:</strong>{{ candidate.skills.join(", ") }}</p>
+  <!-- <div *ngIf="candidate.experience < 3">
+    <span class="label junior">JUNIOR</span>
+  </div>
+  <div *ngIf="candidate.experience <= 5 && candidate.experience > 3">
+    <span class="label intermediate">INTERMEDIO</span>
+  </div>
+  <div *ngIf="candidate.experience > 5">
+    <span class="label senior">SENIOR</span>
+  </div> -->
+  <ng-container [ngSwitch]="experienceLabel">
+    <div *ngSwitchCase="'junior'"><span class="label junior">JUNIOR</span></div>
+    <div *ngSwitchCase="'midlevel'">
+      <span class="label intermediate">INTERMEDIO</span>
+    </div>
+    <div *ngSwitchCase="'senior'"><span class="label senior">SENIOR</span></div>
+  </ng-container>
+  <p><strong>Skills:</strong> {{ candidate.skills.join(", ") }}</p>
+  <div class="skills">
+    <h3>Skills</h3>
+    <div
+      *ngIf="candidate.skills.length < 4; else moreSkills"
+      class="skills__name"
+    >
+      {{ candidate.skills.join(", ") }}
+    </div>
+    <ng-template #moreSkills>
+      <div
+        class="skills__more"
+        *ngIf="!showMoreSkills; else allSkills"
+        (click)="toggleMoreSkills()"
+      >
+        más de 3 skills.
+      </div>
+      <ng-template #allSkills>
+        <div>
+          {{ candidate.skills.join(", ") }}
+          <button (click)="toggleMoreSkills()">X</button>
+        </div>
+      </ng-template>
+    </ng-template>
+  </div>
   <p><button data-testid="candidate-edit" (click)="doEdit()">Edit</button></p>
 </div>

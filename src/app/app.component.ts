@@ -83,4 +83,8 @@ export class AppComponent implements OnInit {
   selectCandidate(candidate: Candidate) {
     this.selectedCandidate = candidate;
   }
+
+  trackById(index: number, item: Candidate) {
+    return item.id;
+  }
 }

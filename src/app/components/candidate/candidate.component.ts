@@ -54,11 +54,22 @@ export class CandidateComponent
 
   @Output() select = new EventEmitter<Candidate>();
 
+  get experienceLabel() {
+    return this.candidate.experience < 3
+      ? 'junior'
+      : this.candidate.experience <= 5
+      ? 'midlevel'
+      : 'senior';
+  }
+
   public name: string = '';
   public surname: string = '';
   public cssClasses: any = {};
   public colorStyle: string = '';
+  showMoreSkills = false;
   private _candidate!: Candidate;
+
+  constructor() {}
 
   ngOnChanges(changes: SimpleChanges) {
     let log: string = '';
@@ -101,4 +112,22 @@ export class CandidateComponent
       this.cssClasses.animate = false;
     }, 750);
   };
+
+  // getCandidateSeniority() {
+  //   if (this.candidate.experience < 3) {
+  //     return 'junior';
+  //   } else if (
+  //     this.candidate.experience <= 5 &&
+  //     this.candidate.experience > 3
+  //   ) {
+  //     return 'intermediate';
+  //   } else if (this.candidate.experience > 5) {
+  //     return 'senior';
+  //   }
+  //   return '';
+  // }
+
+  toggleMoreSkills() {
+    this.showMoreSkills = !this.showMoreSkills;
+  }
 }
