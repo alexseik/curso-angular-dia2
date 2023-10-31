@@ -5,8 +5,7 @@
     <input
       type="number"
       id="candidate-skill"
-      (input)="changeInput($event)"
-      [value]="candidateName"
+      [(ngModel)]="candidateExperience"
     />
   </div>
   <button (click)="list.toggleDirection()">Cambiar lista</button>

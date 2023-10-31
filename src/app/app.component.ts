@@ -76,9 +76,9 @@ export class AppComponent implements OnInit {
     });
   }
 
-  changeInput(event: Event) {
-    this.candidateExperience = parseInt((event.target as any).value);
-  }
+  // changeInput(event: Event) {
+  //   this.candidateExperience = parseInt((event.target as any).value);
+  // }
 
   selectCandidate(candidate: Candidate) {
     this.selectedCandidate = candidate;
