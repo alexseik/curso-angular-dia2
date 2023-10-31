@@ -87,4 +87,24 @@ export class AppComponent implements OnInit {
   trackById(index: number, item: Candidate) {
     return item.id;
   }
+
+  doSortByExperience() {
+    this.candidates = this.sortByExperience(this.candidates);
+  }
+
+  doSortByName() {
+    this.candidates = this.sortByName(this.candidates);
+  }
+
+  private sortByExperience(candidates: Candidate[]): Candidate[] {
+    return candidates.sort(
+      (a: Candidate, b: Candidate) => a.experience - b.experience
+    );
+  }
+
+  private sortByName(candidates: Candidate[]): Candidate[] {
+    return candidates.sort((a: Candidate, b: Candidate) =>
+      a.name.localeCompare(b.name)
+    );
+  }
 }
