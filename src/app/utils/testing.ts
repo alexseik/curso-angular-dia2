@@ -2,7 +2,10 @@ import { DebugElement } from '@angular/core';
 import { ComponentFixture } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-function findEl<T>(fixture: ComponentFixture<T>, testId: string): DebugElement {
+export function findEl<T>(
+  fixture: ComponentFixture<T>,
+  testId: string
+): DebugElement {
   return fixture.debugElement.query(By.css(`[data-testid="${testId}"]`));
 }
 
