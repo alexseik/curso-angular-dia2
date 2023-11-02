@@ -14,10 +14,10 @@ export class HighlightDirective {
   }
 
   constructor(private el: ElementRef) {
-    this.el.nativeElement.style.borderColor = this.color;
-    this.el.nativeElement.style.borderWidth = '5px';
-    this.el.nativeElement.style.borderStyle = 'solid';
-    this.el.nativeElement.style.borderRadius = '5px';
+    // this.el.nativeElement.style.borderColor = this.color;
+    // this.el.nativeElement.style.borderWidth = '5px';
+    // this.el.nativeElement.style.borderStyle = 'solid';
+    // this.el.nativeElement.style.borderRadius = '5px';
   }
 
   @HostListener('mouseenter') onMouseEnter() {

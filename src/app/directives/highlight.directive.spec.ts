@@ -23,6 +23,11 @@ describe('HighlightDirective', () => {
   });
 
   it('should set the border initially', () => {
-    expect(div.style['borderColor']).toBe('blue');
+    expect(div.style['borderColor']).toBe('');
+  });
+
+  it('should set the border when mouseenter', () => {
+    div.dispatchEvent(new Event('mouseenter'));
+    expect(div.style['borderColor']).toBe('red');
   });
 });

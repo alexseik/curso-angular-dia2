@@ -5,12 +5,18 @@ import { CandidateComponent } from './components/candidate/candidate.component';
 import { CandidateListComponent } from './components/candidate-list/candidate-list.component';
 import { FormsModule } from '@angular/forms';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { CapitalizePipe } from './pipes/capitalize.pipe';
 
 describe('AppComponent', () => {
   beforeEach(() =>
     TestBed.configureTestingModule({
       imports: [RouterTestingModule, FormsModule],
-      declarations: [AppComponent, CandidateComponent, CandidateListComponent],
+      declarations: [
+        AppComponent,
+        CandidateComponent,
+        CandidateListComponent,
+        CapitalizePipe,
+      ],
       // schemas: [NO_ERRORS_SCHEMA],
     })
   );
