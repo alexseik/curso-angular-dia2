@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { CandidateComponent } from './components/candidate/candidate.component';
 import { CandidateListComponent } from './components/candidate-list/candidate-list.component';
 import { HighlightDirective } from './directives/highlight.directive';
+import { CapitalizePipe } from './pipes/capitalize.pipe';
+import { ScaleDirective } from './directives/scale.directive';
 
 @NgModule({
   declarations: [
@@ -14,6 +16,8 @@ import { HighlightDirective } from './directives/highlight.directive';
     CandidateComponent,
     CandidateListComponent,
     HighlightDirective,
+    CapitalizePipe,
+    ScaleDirective,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

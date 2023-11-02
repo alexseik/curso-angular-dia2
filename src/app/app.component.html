@@ -1,5 +1,6 @@
 <div class="main">
   <div>{{ candidateName }}</div>
+  <div>{{ currentDate | date : "dd/MM/yyyy" }}</div>
   <div>
     <label for="candidate-skill">Candidate Skill</label>
     <input
@@ -24,10 +25,20 @@
     >
       <span>{{ i }}</span>
       <app-candidate
-        appHighlight
+        *ngIf="i % 2 === 0; else odd"
+        appHighlight="red"
+        appScale
         [candidate]="candidate"
         (select)="selectCandidate($event)"
       ></app-candidate>
+      <ng-template #odd>
+        <app-candidate
+          appHighlight
+          appScale
+          [candidate]="candidate"
+          (select)="selectCandidate($event)"
+        ></app-candidate>
+      </ng-template>
     </div>
   </app-candidate-list>
 </div>

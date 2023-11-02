@@ -3,6 +3,7 @@ export interface Candidate {
   name: string;
   age: number;
   position: string;
-  experience: number;
+  experience: number; // years
+  salary: number;
   skills: string[];
 }

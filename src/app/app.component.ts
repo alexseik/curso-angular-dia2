@@ -10,6 +10,8 @@ import { CandidateComponent } from './components/candidate/candidate.component';
 export class AppComponent implements OnInit {
   title = 'candidates-frontend';
 
+  currentDate = new Date();
+
   @ViewChildren(CandidateComponent)
   private candidateComps!: CandidateComponent[];
 
@@ -18,26 +20,29 @@ export class AppComponent implements OnInit {
   candidates: Candidate[] = [
     {
       id: 1,
-      name: 'José Pérez',
+      name: 'josé    pérez',
       age: 25,
       position: 'Desarrollador Junior',
       experience: 1,
+      salary: 20000,
       skills: ['Java', 'SQL'],
     },
     {
       id: 2,
-      name: 'Paco López',
+      name: 'Paco lópez',
       age: 40,
       position: 'Desarrollador Senior',
       experience: 15,
+      salary: 40000,
       skills: ['Java', 'SQL', 'Oracle', 'PL/SQL', 'Cobol', 'C++'],
     },
     {
       id: 3,
-      name: 'Mireia García',
+      name: 'mireia García',
       age: 30,
       position: 'Desarrolladora Intermedia',
       experience: 4,
+      salary: 30000,
       skills: ['Java', 'SQL', 'Oracle', 'PL/SQL', 'Cobol', 'C++'],
     },
   ];

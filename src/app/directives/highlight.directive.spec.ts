@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 import { findEl } from '../utils/testing';
 
 @Component({
-  template: `<div appHighlight data-testid="host"></div>`,
+  template: `<div appHighlight="red" data-testid="host"></div>`,
 })
 class HostComponent {}
 
