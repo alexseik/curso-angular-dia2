@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ViewChildren } from '@angular/core';
 import { Candidate } from './models/candidate.model';
 import { CandidateComponent } from './components/candidate/candidate.component';
+import { CandidatesService } from './services/candidates.service';
 
 @Component({
   selector: 'app-root',
@@ -17,37 +18,9 @@ export class AppComponent implements OnInit {
 
   public candidatesLength: number = 0;
 
-  candidates: Candidate[] = [
-    {
-      id: 1,
-      name: 'josé    pérez',
-      age: 25,
-      position: 'Desarrollador Junior',
-      experience: 1,
-      salary: 20000,
-      skills: ['Java', 'SQL'],
-    },
-    {
-      id: 2,
-      name: 'Paco lópez',
-      age: 40,
-      position: 'Desarrollador Senior',
-      experience: 15,
-      salary: 40000,
-      skills: ['Java', 'SQL', 'Oracle', 'PL/SQL', 'Cobol', 'C++'],
-    },
-    {
-      id: 3,
-      name: 'mireia García',
-      age: 30,
-      position: 'Desarrolladora Intermedia',
-      experience: 4,
-      salary: 30000,
-      skills: ['Java', 'SQL', 'Oracle', 'PL/SQL', 'Cobol', 'C++'],
-    },
-  ];
-
   selectedCandidate: Candidate | null = null;
+
+  candidates: Candidate[] = [];
 
   get candidateName(): string {
     return this.selectedCandidate ? this.selectedCandidate.name : '';
@@ -59,20 +32,26 @@ export class AppComponent implements OnInit {
 
   set candidateExperience(experience: number) {
     if (this.selectedCandidate) {
-      const candidateIndex = this.candidates.findIndex(
-        (c) => c.name === this.selectedCandidate?.name
+      this.candidatesService.updateCandidate(
+        Object.assign({}, this.selectedCandidate, { experience })
       );
-      if (candidateIndex > -1) {
-        this.candidates[candidateIndex] = Object.assign(
-          {},
-          this.candidates[candidateIndex],
-          { experience }
-        );
-      }
+      // const candidateIndex = this.candidates.findIndex(
+      //   (c) => c.name === this.selectedCandidate?.name
+      // );
+      // if (candidateIndex > -1) {
+      //   this.candidates[candidateIndex] = Object.assign(
+      //     {},
+      //     this.candidates[candidateIndex],
+      //     { experience }
+      //   );
+      // }
     }
   }
 
+  constructor(public candidatesService: CandidatesService) {}
+
   ngOnInit() {
+    this.candidates = this.candidatesService.getCandidates();
     setTimeout(() => {
       this.candidatesLength =
         !!this.candidateComps && 'length' in this.candidateComps
@@ -94,11 +73,15 @@ export class AppComponent implements OnInit {
   }
 
   doSortByExperience() {
-    this.candidates = this.sortByExperience(this.candidates);
+    // this.candidates = this.sortByExperience(this.candidates);
+    this.candidatesService.setSort('experience');
+    // this.candidates = this.candidatesService.getCandidates();
   }
 
   doSortByName() {
-    this.candidates = this.sortByName(this.candidates);
+    // this.candidates = this.sortByName(this.candidates);
+    this.candidatesService.setSort('name');
+    // this.candidates = this.candidatesService.getCandidates();
   }
 
   private sortByExperience(candidates: Candidate[]): Candidate[] {

@@ -21,7 +21,11 @@
     <h2 title>Lista de candidatos</h2>
     <div
       class="candidate-box"
-      *ngFor="let candidate of candidates; let i = index; trackBy: trackById"
+      *ngFor="
+        let candidate of candidatesService.getCandidates();
+        let i = index;
+        trackBy: trackById
+      "
     >
       <span>{{ i }}</span>
       <app-candidate

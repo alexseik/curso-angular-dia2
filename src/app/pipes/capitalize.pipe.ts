@@ -12,8 +12,6 @@ export class CapitalizePipe implements PipeTransform {
     function myMap(palabra: string): string {
       return palabra.charAt(0).toUpperCase() + palabra.slice(1).toLowerCase();
     }
-
-    debugger;
     return str.trim().split(/\s+/).map(myMap).join(' ');
   }
 }
